@@ -1,2 +1,2 @@
-ENCRYPT
-MEET ME ON FRIDAY
+Key
+Plaintext
