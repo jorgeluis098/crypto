@@ -10,10 +10,10 @@ from operator import xor # para poder realizar la operacion xor
 S=[]
 T=[]
 keyStream=[]
-mensaje=[] 
+mensaje=""
 n=0
 j=0
-key="Clave de 128 bit"
+key="Wiki"
 #Se llena el vector S con numeros  0-255 y T con la key
 for i in range(256):
     if n== len(key):
@@ -29,12 +29,12 @@ for i in range(256):
     S[j] = temp
 #PRGA
 j=0
-entrada="Un saludo"
+entrada="Plaintext"
 for i in range(1,len(entrada)+1):
     j=((j + S[i]) % 256)
     temp = S[i]
     S[i] = S[j] 
     S[j] = temp
     keyStream.append(S[(S[i]+S[j]) % 256])
-    mensaje.append(hex(xor(keyStream[i-1],ord(entrada[i-1])))) # xor y se convierte a hex
+    mensaje= mensaje + hex(xor(keyStream[i-1],ord(entrada[i-1]))).upper().split('X')[-1] # xor y se convierte a hex
 print (mensaje)
